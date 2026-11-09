@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 320" role="img" aria-labelledby="title">
+<title id="title">Ilustração de tecnologia</title>
+<rect x="35" y="25" width="350" height="270" rx="34" fill="#dff8f3"/>
+<circle cx="210" cy="145" r="82" fill="#10233f"/>
+<path d="M160 150 L195 185 L265 105" fill="none" stroke="#70e1d1" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="85" cy="75" r="15" fill="#70e1d1"/>
+<circle cx="335" cy="245" r="21" fill="#078b83"/>
+<path d="M85 230 Q125 185 155 220" fill="none" stroke="#078b83" stroke-width="10" stroke-linecap="round"/>
+</svg>

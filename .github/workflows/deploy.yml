@@ -1,0 +1,60 @@
+name: Esteira de Entrega Profissional
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar o código
+        uses: actions/checkout@v4
+
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Organizar arquivos da distribuição
+        run: |
+          rm -rf dist
+          mkdir dist
+          cp *.html dist/
+          cp style.css dist/
+          cp -r assets dist/
+          touch dist/.nojekyll
+          ls -la dist
+
+      - name: Auditoria de Qualidade
+        run: |
+          test -f dist/index.html
+          test -f dist/sobre.html
+          test -f dist/contato.html
+          test -f dist/style.css
+          test -f dist/assets/logo.svg
+          echo "Auditoria concluída com sucesso!"
+
+      - name: Enviar pacote dist
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Publicar no GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
