@@ -1,0 +1,28 @@
+
+name: Cofre e Higiene de Segurança
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  testar-cofre:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar arquivos
+        uses: actions/checkout@v4
+
+      - name: Testar Secret protegida
+        env:
+          CHAVE_MESTRA: ${{ secrets.CHAVE_MESTRA }}
+        run: |
+          if [ -z "$CHAVE_MESTRA" ]; then
+            echo "ERRO: Secret não encontrada!"
+            exit 1
+          fi
+
+          echo "Secret encontrada com sucesso!"
+          echo "Valor protegido: $CHAVE_MESTRA"

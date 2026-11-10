@@ -1,0 +1,10 @@
+
+# Arquivos de ambiente e senhas
+.env
+*.env
+
+# Dependências
+node_modules/
+
+# Arquivos gerados
+dist/

@@ -53,3 +53,7 @@ footer { padding: 22px; text-align: center; background: #e8edf5; color: #526176;
   .ilustracao { width: 220px; align-self: center; }
   .cartoes { grid-template-columns: 1fr; }
 }
+
+body {
+    background-color: #e8f0fe;
+}
